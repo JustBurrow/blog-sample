@@ -1,4 +1,4 @@
-package kr.lul.blog.suspendfun.sample1
+package kr.lul.blog.suspendfun.basic
 
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking

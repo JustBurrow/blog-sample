@@ -1,4 +1,4 @@
-package kr.lul.blog.suspendfun.sample1
+package kr.lul.blog.suspendfun.basic
 
 import kotlinx.coroutines.delay
 import java.time.Instant
