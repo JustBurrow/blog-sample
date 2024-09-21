@@ -8,9 +8,9 @@ class SecondNavigator(
     private val navHostController: NavHostController
 ) {
     companion object {
-        const val routePatten = "second"
+        const val routePattern = "second"
 
-        fun route() = routePatten
+        fun route() = routePattern
     }
 
     fun third(param1: Int, param2: String) {

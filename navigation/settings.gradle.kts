@@ -27,6 +27,6 @@ rootProject.name = "Navigation"
 include(
     ":guide",
     ":scope",
-    ":screenobject"
+    ":screenobject",
+    ":abstraction"
 )
- 

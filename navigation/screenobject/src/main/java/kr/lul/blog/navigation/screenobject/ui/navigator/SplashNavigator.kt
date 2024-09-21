@@ -8,9 +8,9 @@ class SplashNavigator(
     private val navHostController: NavHostController
 ) {
     companion object {
-        const val routePatten = "splash"
+        const val routePattern = "splash"
 
-        fun route() = routePatten
+        fun route() = routePattern
     }
 
     fun first() {

@@ -1,7 +1,8 @@
-package kr.lul.blog.navigation.screenobject.ui.navigator
+package kr.lul.blog.navigation.abstraction.ui.navigator
 
 import androidx.compose.runtime.Immutable
 import androidx.navigation.NamedNavArgument
+import androidx.navigation.NavDeepLink
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
@@ -9,11 +10,11 @@ import androidx.navigation.navArgument
 @Immutable
 class ThirdNavigator(
     private val navHostController: NavHostController
-) {
-    companion object {
-        const val routePattern = "third/{param1}?param2={param2}"
+) : Navigator {
+    companion object : Destination {
+        override val routePattern = "third/{param1}?param2={param2}"
 
-        val arguments: List<NamedNavArgument> = listOf(
+        override val arguments: List<NamedNavArgument> = listOf(
             navArgument("param1") {
                 nullable = false
                 type = NavType.IntType
@@ -24,12 +25,14 @@ class ThirdNavigator(
             }
         )
 
+        override val deepLinks: List<NavDeepLink> = emptyList()
+
         fun route(param1: Int) = "third/$param1"
 
         fun route(param1: Int, param2: String) = "third/$param1?param2=$param2"
     }
 
-    fun back() {
+    override fun back() {
         navHostController.popBackStack()
     }
 }
