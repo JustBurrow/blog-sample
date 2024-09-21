@@ -1,8 +1,6 @@
 package kr.lul.blog.navigation.screenobject.ui.navigator
 
 import androidx.compose.runtime.Immutable
-import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavDeepLink
 import androidx.navigation.NavHostController
 
 @Immutable
@@ -12,16 +10,14 @@ class FirstNavigator(
     companion object {
         const val routePattern = "first"
 
-        val arguments: List<NamedNavArgument> = listOf()
-
-        val deepLinks: List<NavDeepLink> = listOf()
+        fun route() = routePattern
     }
 
     fun second() {
-        navHostController.navigate(SecondNavigator.routePatten)
+        navHostController.navigate(SecondNavigator.route())
     }
 
     fun third(param1: Int) {
-        navHostController.navigate("third/$param1")
+        navHostController.navigate(ThirdNavigator.route(param1))
     }
 }

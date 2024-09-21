@@ -1,8 +1,6 @@
 package kr.lul.blog.navigation.screenobject.ui.navigator
 
 import androidx.compose.runtime.Immutable
-import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavDeepLink
 import androidx.navigation.NavHostController
 
 @Immutable
@@ -12,13 +10,11 @@ class SplashNavigator(
     companion object {
         const val routePatten = "splash"
 
-        val arguments: List<NamedNavArgument> = listOf()
-
-        val deepLinks: List<NavDeepLink> = listOf()
+        fun route() = routePatten
     }
 
     fun first() {
         navHostController.popBackStack()
-        navHostController.navigate(FirstNavigator.routePattern)
+        navHostController.navigate(FirstNavigator.route())
     }
 }

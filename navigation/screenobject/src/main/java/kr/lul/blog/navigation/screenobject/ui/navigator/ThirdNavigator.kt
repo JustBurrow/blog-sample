@@ -2,7 +2,6 @@ package kr.lul.blog.navigation.screenobject.ui.navigator
 
 import androidx.compose.runtime.Immutable
 import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavDeepLink
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
@@ -25,7 +24,9 @@ class ThirdNavigator(
             }
         )
 
-        val deepLinks: List<NavDeepLink> = listOf()
+        fun route(param1: Int) = "third/$param1"
+
+        fun route(param1: Int, param2: String) = "third/$param1?param2=$param2"
     }
 
     fun back() {

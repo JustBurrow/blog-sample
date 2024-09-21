@@ -21,17 +21,17 @@ fun Root(
     navHostController: NavHostController = rememberNavController()
 ) {
     NavigationTheme {
-        NavHost(navHostController, SplashNavigator.routePatten) {
-            composable(SplashNavigator.routePatten, SplashNavigator.arguments, SplashNavigator.deepLinks) {
+        NavHost(navHostController, SplashNavigator.route()) {
+            composable(SplashNavigator.routePatten) {
                 SplashScreen(navigator = SplashNavigator(navHostController))
             }
-            composable(FirstNavigator.routePattern, FirstNavigator.arguments, FirstNavigator.deepLinks) {
+            composable(FirstNavigator.routePattern) {
                 FirstScreen(navigator = FirstNavigator(navHostController))
             }
-            composable(SecondNavigator.routePatten, SecondNavigator.arguments, SecondNavigator.deepLinks) {
+            composable(SecondNavigator.routePatten) {
                 SecondScreen(navigator = SecondNavigator(navHostController))
             }
-            composable(ThirdNavigator.routePatten, ThirdNavigator.arguments, ThirdNavigator.deepLinks) {
+            composable(ThirdNavigator.routePatten, ThirdNavigator.arguments) {
                 ThirdScreen(
                     navigator = ThirdNavigator(navHostController),
                     args = it.toRoute()
