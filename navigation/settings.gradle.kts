@@ -24,5 +24,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Navigation"
-include(":guide")
+include(
+    ":guide",
+    ":scope"
+)
  
