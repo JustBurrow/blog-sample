@@ -3,17 +3,32 @@ package kr.lul.blog.navigation.guide.ui.screen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import kr.lul.blog.navigation.guide.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.guide.viewmodel.SecondViewModel
@@ -21,7 +36,7 @@ import kr.lul.blog.navigation.guide.viewmodel.SecondViewModel
 @Composable
 fun SecondScreen(
     viewModel: SecondViewModel = hiltViewModel(),
-    onClickThird: () -> Unit = {},
+    onClickThird: (Int, String) -> Unit = { _, _ -> },
     onClickBack: () -> Unit = {}
 ) {
     SecondScreenContent(onClickThird = onClickThird, onClickBack = onClickBack)
@@ -29,7 +44,7 @@ fun SecondScreen(
 
 @Composable
 private fun SecondScreenContent(
-    onClickThird: () -> Unit = {},
+    onClickThird: (Int, String) -> Unit = { _, _ -> },
     onClickBack: () -> Unit = {}
 ) {
     Column(
@@ -46,9 +61,50 @@ private fun SecondScreenContent(
             style = MaterialTheme.typography.displayLarge
         )
 
-        Button(onClick = onClickThird, modifier = Modifier.padding(16.dp)) {
-            Text(text = "Go to 3rd", style = MaterialTheme.typography.bodyLarge)
+        Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            var param1 by remember { mutableStateOf("") }
+            var param2 by remember { mutableStateOf("") }
+            Column {
+                OutlinedTextField(
+                    value = param1,
+                    onValueChange = { param1 = it },
+                    modifier = Modifier.padding(4.dp),
+                    placeholder = { Text("Input param1, digits only.") },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Next
+                    )
+                )
+                OutlinedTextField(
+                    value = param2,
+                    onValueChange = { param2 = it },
+                    modifier = Modifier.padding(4.dp),
+                    placeholder = { Text("Input param2.") },
+                    keyboardOptions = if (param1.isNotEmpty() && param1.isDigitsOnly() && param2.isNotEmpty()) {
+                        KeyboardOptions.Default.copy(imeAction = ImeAction.Go)
+                    } else {
+                        KeyboardOptions.Default
+                    },
+                    keyboardActions = KeyboardActions {
+                        if (param1.isNotEmpty() && param1.isDigitsOnly() && param2.isNotEmpty()) {
+                            onClickThird(param1.toInt(), param2)
+                        }
+                    }
+                )
+            }
+
+            IconButton(
+                onClick = { onClickThird(param1.toInt(), param2) },
+                enabled = param1.isNotEmpty() && param1.isDigitsOnly() && param2.isNotEmpty(),
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.Send,
+                    contentDescription = "Go to 3rd",
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
         }
+
         Button(onClick = onClickBack, modifier = Modifier.padding(16.dp)) {
             Text(text = "Go Back", style = MaterialTheme.typography.bodyLarge)
         }

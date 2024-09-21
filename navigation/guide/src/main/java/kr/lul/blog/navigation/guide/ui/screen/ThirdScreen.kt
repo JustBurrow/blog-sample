@@ -13,21 +13,36 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import kr.lul.blog.navigation.guide.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.guide.viewmodel.ThirdViewModel
+import java.util.UUID
+
+@Serializable
+data class ThirdScreenArgs(
+    @SerialName("param1")
+    val param1: Int,
+    @SerialName("param2")
+    val param2: String? = null
+)
 
 @Composable
 fun ThirdScreen(
+    args: ThirdScreenArgs,
     viewModel: ThirdViewModel = hiltViewModel(),
     onClickBack: () -> Unit = {}
 ) {
-    ThirdScreenContent(onClickBack = onClickBack)
+    ThirdScreenContent(args = args, onClickBack = onClickBack)
 }
 
 @Composable
 private fun ThirdScreenContent(
+    args: ThirdScreenArgs,
     onClickBack: () -> Unit = {}
 ) {
     Column(
@@ -44,16 +59,30 @@ private fun ThirdScreenContent(
             style = MaterialTheme.typography.displayLarge
         )
 
+        Text("param1: ${args.param1}", modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.titleLarge)
+        Text(
+            "param2: ${args.param2 ?: "(null)"}",
+            modifier = Modifier.padding(8.dp),
+            style = MaterialTheme.typography.titleLarge
+        )
+
         Button(onClick = onClickBack, modifier = Modifier.padding(16.dp)) {
             Text(text = "Go Back", style = MaterialTheme.typography.bodyLarge)
         }
     }
 }
 
+private class ThirdScreenArgsProvider : PreviewParameterProvider<ThirdScreenArgs> {
+    override val values = sequenceOf(
+        ThirdScreenArgs(2, null),
+        ThirdScreenArgs(1, UUID.randomUUID().toString().take(8).uppercase())
+    )
+}
+
 @Composable
 @Preview(showSystemUi = true)
-private fun PreviewThirdScreenContent() {
+private fun PreviewThirdScreenContent(@PreviewParameter(ThirdScreenArgsProvider::class) args: ThirdScreenArgs) {
     NavigationTheme {
-        ThirdScreenContent()
+        ThirdScreenContent(args)
     }
 }

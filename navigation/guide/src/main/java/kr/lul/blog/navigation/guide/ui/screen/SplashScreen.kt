@@ -51,6 +51,13 @@ private fun SplashScreenContent() {
             color = MaterialTheme.colorScheme.onPrimaryContainer,
             style = MaterialTheme.typography.displayLarge
         )
+        Text(
+            text = "Guide",
+            modifier = Modifier
+                .padding(16.dp),
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
+            style = MaterialTheme.typography.displayLarge
+        )
     }
 }
 
