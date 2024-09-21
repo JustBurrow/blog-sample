@@ -26,6 +26,7 @@ dependencyResolutionManagement {
 rootProject.name = "Navigation"
 include(
     ":guide",
-    ":scope"
+    ":scope",
+    ":screenobject"
 )
  
