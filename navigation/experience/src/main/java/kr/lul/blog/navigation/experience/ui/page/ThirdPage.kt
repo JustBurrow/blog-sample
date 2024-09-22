@@ -1,4 +1,4 @@
-package kr.lul.blog.navigation.experience.ui.screen
+package kr.lul.blog.navigation.experience.ui.page
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -30,8 +30,11 @@ import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.experience.viewmodel.ThirdViewModel
 import java.util.UUID
 
+/**
+ * 디자인 : [3rd 페이지](https://www.figma.com/board/dmtCT6n0IvUF89DH0BmCeL?node-id=8-371&node-type=section)
+ */
 @Serializable
-data class ThirdScreenArgs(
+data class ThirdPageArgs(
     @SerialName("param1")
     val param1: Int,
     @SerialName("param2")
@@ -39,19 +42,19 @@ data class ThirdScreenArgs(
 )
 
 @Composable
-fun ThirdScreen(
+fun ThirdPage(
     navigator: ThirdNavigator,
-    args: ThirdScreenArgs,
+    args: ThirdPageArgs,
     viewModel: ThirdViewModel = hiltViewModel()
 ) {
     Log.v("ui", "#ThirdScreen args : navigator=$navigator, args=$args, viewModel=$viewModel")
-    ThirdScreenContent(navigator = navigator, args = args)
+    ThirdPageContent(navigator = navigator, args = args)
 }
 
 @Composable
-private fun ThirdScreenContent(
+private fun ThirdPageContent(
     navigator: ThirdNavigator,
-    args: ThirdScreenArgs
+    args: ThirdPageArgs
 ) {
     Column(
         modifier = Modifier
@@ -92,18 +95,18 @@ private fun ThirdScreenContent(
     }
 }
 
-private class ThirdScreenArgsProvider : PreviewParameterProvider<ThirdScreenArgs> {
+private class ThirdPageArgsProvider : PreviewParameterProvider<ThirdPageArgs> {
     override val values = sequenceOf(
-        ThirdScreenArgs(2, null),
-        ThirdScreenArgs(1, UUID.randomUUID().toString().take(8).uppercase())
+        ThirdPageArgs(2, null),
+        ThirdPageArgs(1, UUID.randomUUID().toString().take(8).uppercase())
     )
 }
 
 @Composable
 @Preview(showSystemUi = true)
-private fun PreviewThirdScreenContent(@PreviewParameter(ThirdScreenArgsProvider::class) args: ThirdScreenArgs) {
+private fun PreviewThirdPageContent(@PreviewParameter(ThirdPageArgsProvider::class) args: ThirdPageArgs) {
     NavigationTheme {
-        ThirdScreenContent(
+        ThirdPageContent(
             navigator = ThirdNavigator(rememberBaseNavigator()),
             args = args
         )

@@ -48,7 +48,7 @@ fun NavGraphBuilder.composable(
  *
  * @see androidx.navigation.compose.composable
  */
-inline fun <N : Navigator> NavGraphBuilder.composable(
+inline fun <N : Navigator> NavGraphBuilder.page(
     navigator: N,
     noinline enterTransition: (@JvmSuppressWildcards AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition?)? = null,
     noinline exitTransition: (@JvmSuppressWildcards AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition?)? = null,

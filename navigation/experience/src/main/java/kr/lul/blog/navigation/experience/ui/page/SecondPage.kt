@@ -1,4 +1,4 @@
-package kr.lul.blog.navigation.experience.ui.screen
+package kr.lul.blog.navigation.experience.ui.page
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -40,17 +40,20 @@ import kr.lul.blog.navigation.experience.ui.navigator.SecondNavigator
 import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.experience.viewmodel.SecondViewModel
 
+/**
+ * 디자인 : [2nd 페이지](https://www.figma.com/board/dmtCT6n0IvUF89DH0BmCeL?node-id=1-357&node-type=section)
+ */
 @Composable
-fun SecondScreen(
+fun SecondPage(
     navigator: SecondNavigator,
     viewModel: SecondViewModel = hiltViewModel()
 ) {
     Log.v("ui", "#SecondScreen args : navigator=$navigator, viewModel=$viewModel")
-    SecondScreenContent(navigator = navigator)
+    SecondPageContent(navigator = navigator)
 }
 
 @Composable
-private fun SecondScreenContent(
+private fun SecondPageContent(
     navigator: SecondNavigator
 ) {
     Column(
@@ -130,8 +133,8 @@ private fun SecondScreenContent(
 
 @Composable
 @Preview(showSystemUi = true)
-private fun PreviewSecondScreenContent() {
+private fun PreviewSecondPageContent() {
     NavigationTheme {
-        SecondScreenContent(SecondNavigator(rememberBaseNavigator()))
+        SecondPageContent(SecondNavigator(rememberBaseNavigator()))
     }
 }

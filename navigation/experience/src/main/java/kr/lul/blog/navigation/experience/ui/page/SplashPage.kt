@@ -1,4 +1,4 @@
-package kr.lul.blog.navigation.experience.ui.screen
+package kr.lul.blog.navigation.experience.ui.page
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -22,8 +22,11 @@ import kr.lul.blog.navigation.experience.ui.navigator.SplashNavigator
 import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.experience.viewmodel.SplashViewModel
 
+/**
+ * 디자인 : [스플래시 페이지](https://www.figma.com/board/dmtCT6n0IvUF89DH0BmCeL)
+ */
 @Composable
-fun SplashScreen(
+fun SplashPage(
     navigator: SplashNavigator,
     viewModel: SplashViewModel = hiltViewModel()
 ) {
@@ -35,11 +38,11 @@ fun SplashScreen(
             navigator.first()
         }
     }
-    SplashScreenContent()
+    SplashPageContent()
 }
 
 @Composable
-private fun SplashScreenContent() {
+private fun SplashPageContent() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -59,8 +62,8 @@ private fun SplashScreenContent() {
 
 @Composable
 @Preview(showSystemUi = true)
-private fun PreviewSplashScreenContent() {
+private fun PreviewSplashPageContent() {
     NavigationTheme {
-        SplashScreenContent()
+        SplashPageContent()
     }
 }

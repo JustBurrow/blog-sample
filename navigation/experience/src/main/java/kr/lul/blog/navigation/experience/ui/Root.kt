@@ -6,16 +6,16 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.toRoute
 import kr.lul.blog.navigation.artifact.BaseNavigator
-import kr.lul.blog.navigation.artifact.composable
+import kr.lul.blog.navigation.artifact.page
 import kr.lul.blog.navigation.artifact.rememberBaseNavigator
 import kr.lul.blog.navigation.experience.ui.navigator.FirstNavigator
 import kr.lul.blog.navigation.experience.ui.navigator.SecondNavigator
 import kr.lul.blog.navigation.experience.ui.navigator.SplashNavigator
 import kr.lul.blog.navigation.experience.ui.navigator.ThirdNavigator
-import kr.lul.blog.navigation.experience.ui.screen.FirstScreen
-import kr.lul.blog.navigation.experience.ui.screen.SecondScreen
-import kr.lul.blog.navigation.experience.ui.screen.SplashScreen
-import kr.lul.blog.navigation.experience.ui.screen.ThirdScreen
+import kr.lul.blog.navigation.experience.ui.page.FirstPage
+import kr.lul.blog.navigation.experience.ui.page.SecondPage
+import kr.lul.blog.navigation.experience.ui.page.SplashPage
+import kr.lul.blog.navigation.experience.ui.page.ThirdPage
 import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
 
 @Composable
@@ -29,17 +29,17 @@ fun Root(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            composable(SplashNavigator(baseNavigator)) { _, navigator ->
-                SplashScreen(navigator)
+            page(SplashNavigator(baseNavigator)) { _, navigator ->
+                SplashPage(navigator)
             }
-            composable(FirstNavigator(baseNavigator)) { _, navigator ->
-                FirstScreen(navigator)
+            page(FirstNavigator(baseNavigator)) { _, navigator ->
+                FirstPage(navigator)
             }
-            composable(SecondNavigator(baseNavigator)) { _, navigator ->
-                SecondScreen(navigator)
+            page(SecondNavigator(baseNavigator)) { _, navigator ->
+                SecondPage(navigator)
             }
-            composable(ThirdNavigator(baseNavigator)) { backStackEntry, navigator ->
-                ThirdScreen(
+            page(ThirdNavigator(baseNavigator)) { backStackEntry, navigator ->
+                ThirdPage(
                     navigator = navigator,
                     args = backStackEntry.toRoute()
                 )

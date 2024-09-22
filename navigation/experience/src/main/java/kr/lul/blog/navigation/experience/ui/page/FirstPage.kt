@@ -1,4 +1,4 @@
-package kr.lul.blog.navigation.experience.ui.screen
+package kr.lul.blog.navigation.experience.ui.page
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -39,19 +39,22 @@ import kr.lul.blog.navigation.experience.ui.navigator.FirstNavigator
 import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.experience.viewmodel.FirstViewModel
 
+/**
+ * 디자인 : [1st 페이지](https://www.figma.com/board/dmtCT6n0IvUF89DH0BmCeL?node-id=1-137&node-type=section)
+ */
 @Composable
-fun FirstScreen(
+fun FirstPage(
     navigator: FirstNavigator,
     viewModel: FirstViewModel = hiltViewModel()
 ) {
     Log.v("ui", "#FirstScreen args : navigator=$navigator, viewModel=$viewModel")
-    FirstScreenContent(
+    FirstPageContent(
         navigator = navigator
     )
 }
 
 @Composable
-private fun FirstScreenContent(
+private fun FirstPageContent(
     navigator: FirstNavigator
 ) {
     Column(
@@ -119,8 +122,8 @@ private fun FirstScreenContent(
 
 @Composable
 @Preview(showSystemUi = true)
-private fun PreviewFirstScreenContent() {
+private fun PreviewFirstPageContent() {
     NavigationTheme {
-        FirstScreenContent(FirstNavigator(rememberBaseNavigator()))
+        FirstPageContent(FirstNavigator(rememberBaseNavigator()))
     }
 }
