@@ -14,14 +14,17 @@ class ThirdNavigator(
     private val base: BaseNavigator
 ) : Navigator by base {
     companion object : Destination {
-        override val routePattern = "third/{param1}?param2={param2}"
+        const val ARG_PARAM1 = "param1"
+        const val ARG_PARAM2 = "param2"
+
+        override val routePattern = "third/{$ARG_PARAM1}?$ARG_PARAM2={$ARG_PARAM2}"
 
         override val arguments: List<NamedNavArgument> = listOf(
-            navArgument("param1") {
+            navArgument(ARG_PARAM1) {
                 nullable = false
                 type = NavType.IntType
             },
-            navArgument("param2") {
+            navArgument(ARG_PARAM2) {
                 nullable = true
                 type = NavType.StringType
             }

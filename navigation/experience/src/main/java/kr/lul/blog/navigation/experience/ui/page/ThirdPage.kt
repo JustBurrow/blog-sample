@@ -30,17 +30,17 @@ import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.experience.viewmodel.ThirdViewModel
 import java.util.UUID
 
-/**
- * 디자인 : [3rd 페이지](https://www.figma.com/board/dmtCT6n0IvUF89DH0BmCeL?node-id=8-371&node-type=section)
- */
 @Serializable
 data class ThirdPageArgs(
-    @SerialName("param1")
+    @SerialName(ThirdNavigator.ARG_PARAM1)
     val param1: Int,
-    @SerialName("param2")
+    @SerialName(ThirdNavigator.ARG_PARAM2)
     val param2: String? = null
 )
 
+/**
+ * 디자인 : [3rd 페이지](https://www.figma.com/board/dmtCT6n0IvUF89DH0BmCeL?node-id=8-371&node-type=section)
+ */
 @Composable
 fun ThirdPage(
     navigator: ThirdNavigator,
