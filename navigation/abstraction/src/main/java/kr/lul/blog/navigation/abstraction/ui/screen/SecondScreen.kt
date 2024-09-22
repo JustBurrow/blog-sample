@@ -36,6 +36,7 @@ import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import kr.lul.blog.navigation.abstraction.ui.component.CommonFeature
+import kr.lul.blog.navigation.abstraction.ui.navigator.BaseNavigator
 import kr.lul.blog.navigation.abstraction.ui.navigator.SecondNavigator
 import kr.lul.blog.navigation.abstraction.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.abstraction.viewmodel.SecondViewModel
@@ -131,6 +132,6 @@ private fun SecondScreenContent(
 @Preview(showSystemUi = true)
 private fun PreviewSecondScreenContent() {
     NavigationTheme {
-        SecondScreenContent(SecondNavigator(PreviewActivity(), rememberNavController()))
+        SecondScreenContent(SecondNavigator(BaseNavigator(PreviewActivity(), rememberNavController(), SecondNavigator)))
     }
 }

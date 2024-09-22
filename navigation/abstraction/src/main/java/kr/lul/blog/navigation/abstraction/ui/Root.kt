@@ -1,13 +1,11 @@
 package kr.lul.blog.navigation.abstraction.ui
 
-import android.app.Activity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import kr.lul.blog.navigation.abstraction.ui.navigator.BaseNavigator
 import kr.lul.blog.navigation.abstraction.ui.navigator.FirstNavigator
 import kr.lul.blog.navigation.abstraction.ui.navigator.SecondNavigator
 import kr.lul.blog.navigation.abstraction.ui.navigator.SplashNavigator
@@ -21,26 +19,25 @@ import kr.lul.blog.navigation.abstraction.ui.theme.NavigationTheme
 
 @Composable
 fun Root(
-    activity: Activity,
-    navHostController: NavHostController = rememberNavController()
+    baseNavigator: BaseNavigator
 ) {
     NavigationTheme {
         NavHost(
-            navController = navHostController,
-            startDestination = SplashNavigator.route(),
+            navController = baseNavigator.navHostController,
+            startDestination = baseNavigator.destination.routePattern,
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            composable(SplashNavigator(activity, navHostController)) { _, navigator ->
+            composable(SplashNavigator(baseNavigator)) { _, navigator ->
                 SplashScreen(navigator)
             }
-            composable(FirstNavigator(activity, navHostController)) { _, navigator ->
+            composable(FirstNavigator(baseNavigator)) { _, navigator ->
                 FirstScreen(navigator)
             }
-            composable(SecondNavigator(activity, navHostController)) { _, navigator ->
+            composable(SecondNavigator(baseNavigator)) { _, navigator ->
                 SecondScreen(navigator)
             }
-            composable(ThirdNavigator(activity, navHostController)) { backStackEntry, navigator ->
+            composable(ThirdNavigator(baseNavigator)) { backStackEntry, navigator ->
                 ThirdScreen(
                     navigator = navigator,
                     args = backStackEntry.toRoute()

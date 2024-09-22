@@ -25,6 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kr.lul.blog.navigation.abstraction.ui.component.CommonFeature
+import kr.lul.blog.navigation.abstraction.ui.navigator.BaseNavigator
 import kr.lul.blog.navigation.abstraction.ui.navigator.ThirdNavigator
 import kr.lul.blog.navigation.abstraction.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.abstraction.viewmodel.ThirdViewModel
@@ -102,6 +103,9 @@ private class ThirdScreenArgsProvider : PreviewParameterProvider<ThirdScreenArgs
 @Preview(showSystemUi = true)
 private fun PreviewThirdScreenContent(@PreviewParameter(ThirdScreenArgsProvider::class) args: ThirdScreenArgs) {
     NavigationTheme {
-        ThirdScreenContent(ThirdNavigator(PreviewActivity(), rememberNavController()), args)
+        ThirdScreenContent(
+            navigator = ThirdNavigator(BaseNavigator(PreviewActivity(), rememberNavController(), ThirdNavigator)),
+            args = args
+        )
     }
 }
