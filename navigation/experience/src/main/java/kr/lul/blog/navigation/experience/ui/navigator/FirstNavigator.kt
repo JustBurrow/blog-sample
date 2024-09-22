@@ -3,6 +3,9 @@ package kr.lul.blog.navigation.experience.ui.navigator
 import androidx.compose.runtime.Immutable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavDeepLink
+import kr.lul.blog.navigation.artifact.BaseNavigator
+import kr.lul.blog.navigation.artifact.Destination
+import kr.lul.blog.navigation.artifact.Navigator
 
 @Immutable
 class FirstNavigator(

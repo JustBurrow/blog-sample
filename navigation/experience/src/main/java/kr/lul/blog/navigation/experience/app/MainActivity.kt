@@ -5,9 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import dagger.hilt.android.AndroidEntryPoint
+import kr.lul.blog.navigation.artifact.rememberBaseNavigator
 import kr.lul.blog.navigation.experience.ui.Root
 import kr.lul.blog.navigation.experience.ui.navigator.SplashNavigator
-import kr.lul.blog.navigation.experience.ui.navigator.rememberBaseNavigator
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

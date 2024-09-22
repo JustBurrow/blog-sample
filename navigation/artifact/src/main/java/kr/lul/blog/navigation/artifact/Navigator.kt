@@ -1,4 +1,4 @@
-package kr.lul.blog.navigation.experience.ui.navigator
+package kr.lul.blog.navigation.artifact
 
 import android.net.Uri
 

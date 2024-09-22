@@ -1,27 +1,20 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.serialization)
 }
 
 android {
-    namespace = "kr.lul.blog.navigation.experience"
+    namespace = "kr.lul.blog.navigation.artifact"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "kr.lul.blog.navigation.experience"
         minSdk = 29
-        targetSdk = 34
-        versionCode = 1
-        versionName = "0.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -39,24 +32,14 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-    implementation(projects.artifact)
-
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.hilt)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.androidx.core)
-    implementation(libs.androidx.lifecycle.runtime)
-    implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.ui.tooling.preview)

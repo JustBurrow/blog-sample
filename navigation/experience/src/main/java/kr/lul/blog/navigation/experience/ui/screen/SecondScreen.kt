@@ -34,9 +34,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
+import kr.lul.blog.navigation.artifact.rememberBaseNavigator
 import kr.lul.blog.navigation.experience.ui.component.CommonFeature
 import kr.lul.blog.navigation.experience.ui.navigator.SecondNavigator
-import kr.lul.blog.navigation.experience.ui.navigator.rememberBaseNavigator
 import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.experience.viewmodel.SecondViewModel
 

@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kr.lul.blog.navigation.artifact.rememberBaseNavigator
 import kr.lul.blog.navigation.experience.ui.component.CommonFeature
 import kr.lul.blog.navigation.experience.ui.navigator.ThirdNavigator
-import kr.lul.blog.navigation.experience.ui.navigator.rememberBaseNavigator
 import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.experience.viewmodel.ThirdViewModel
 import java.util.UUID

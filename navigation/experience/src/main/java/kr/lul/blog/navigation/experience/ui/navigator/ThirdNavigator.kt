@@ -5,6 +5,9 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavDeepLink
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
+import kr.lul.blog.navigation.artifact.BaseNavigator
+import kr.lul.blog.navigation.artifact.Destination
+import kr.lul.blog.navigation.artifact.Navigator
 
 @Immutable
 class ThirdNavigator(

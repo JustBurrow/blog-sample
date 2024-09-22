@@ -29,5 +29,6 @@ include(
     ":scope",
     ":screenobject",
     ":abstraction",
-    ":experience"
+    ":experience",
+    ":artifact"
 )

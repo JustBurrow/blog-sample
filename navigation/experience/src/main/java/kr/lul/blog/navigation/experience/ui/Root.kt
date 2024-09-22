@@ -5,13 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.toRoute
-import kr.lul.blog.navigation.experience.ui.navigator.BaseNavigator
+import kr.lul.blog.navigation.artifact.BaseNavigator
+import kr.lul.blog.navigation.artifact.composable
+import kr.lul.blog.navigation.artifact.rememberBaseNavigator
 import kr.lul.blog.navigation.experience.ui.navigator.FirstNavigator
 import kr.lul.blog.navigation.experience.ui.navigator.SecondNavigator
 import kr.lul.blog.navigation.experience.ui.navigator.SplashNavigator
 import kr.lul.blog.navigation.experience.ui.navigator.ThirdNavigator
-import kr.lul.blog.navigation.experience.ui.navigator.composable
-import kr.lul.blog.navigation.experience.ui.navigator.rememberBaseNavigator
 import kr.lul.blog.navigation.experience.ui.screen.FirstScreen
 import kr.lul.blog.navigation.experience.ui.screen.SecondScreen
 import kr.lul.blog.navigation.experience.ui.screen.SplashScreen
