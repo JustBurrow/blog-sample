@@ -28,5 +28,6 @@ include(
     ":guide",
     ":scope",
     ":screenobject",
-    ":abstraction"
+    ":abstraction",
+    ":experience"
 )

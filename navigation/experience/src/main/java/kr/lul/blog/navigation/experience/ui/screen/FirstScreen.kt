@@ -1,4 +1,4 @@
-package kr.lul.blog.navigation.abstraction.ui.screen
+package kr.lul.blog.navigation.experience.ui.screen
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -29,17 +29,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.PreviewActivity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.compose.rememberNavController
-import kr.lul.blog.navigation.abstraction.ui.component.CommonFeature
-import kr.lul.blog.navigation.abstraction.ui.navigator.BaseNavigator
-import kr.lul.blog.navigation.abstraction.ui.navigator.FirstNavigator
-import kr.lul.blog.navigation.abstraction.ui.theme.NavigationTheme
-import kr.lul.blog.navigation.abstraction.viewmodel.FirstViewModel
+import kr.lul.blog.navigation.experience.ui.component.CommonFeature
+import kr.lul.blog.navigation.experience.ui.navigator.FirstNavigator
+import kr.lul.blog.navigation.experience.ui.navigator.rememberBaseNavigator
+import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
+import kr.lul.blog.navigation.experience.viewmodel.FirstViewModel
 
 @Composable
 fun FirstScreen(
@@ -123,6 +121,6 @@ private fun FirstScreenContent(
 @Preview(showSystemUi = true)
 private fun PreviewFirstScreenContent() {
     NavigationTheme {
-        FirstScreenContent(FirstNavigator(BaseNavigator(PreviewActivity(), rememberNavController(), FirstNavigator)))
+        FirstScreenContent(FirstNavigator(rememberBaseNavigator()))
     }
 }

@@ -46,13 +46,6 @@ private fun SplashScreenContent() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Splash",
-            modifier = Modifier
-                .padding(16.dp),
-            color = MaterialTheme.colorScheme.onPrimaryContainer,
-            style = MaterialTheme.typography.displayLarge
-        )
-        Text(
             text = "Screen Object",
             modifier = Modifier
                 .padding(16.dp),

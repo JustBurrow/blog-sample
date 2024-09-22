@@ -1,5 +1,6 @@
-package kr.lul.blog.navigation.guide.ui.screen
+package kr.lul.blog.navigation.experience.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,19 +18,21 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kr.lul.blog.navigation.guide.ui.theme.NavigationTheme
-import kr.lul.blog.navigation.guide.viewmodel.SplashViewModel
+import kr.lul.blog.navigation.experience.ui.navigator.SplashNavigator
+import kr.lul.blog.navigation.experience.ui.theme.NavigationTheme
+import kr.lul.blog.navigation.experience.viewmodel.SplashViewModel
 
 @Composable
 fun SplashScreen(
-    viewModel: SplashViewModel = hiltViewModel(),
-    openFirst: () -> Unit = {}
+    navigator: SplashNavigator,
+    viewModel: SplashViewModel = hiltViewModel()
 ) {
+    Log.v("ui", "#SplashScreen args : navigator=$navigator, viewModel=$viewModel")
     val scope = rememberCoroutineScope()
     LaunchedEffect(viewModel) {
         scope.launch {
             delay(3000)
-            openFirst()
+            navigator.first()
         }
     }
     SplashScreenContent()
@@ -45,7 +48,7 @@ private fun SplashScreenContent() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Guide",
+            text = "Experience",
             modifier = Modifier
                 .padding(16.dp),
             color = MaterialTheme.colorScheme.onPrimaryContainer,
