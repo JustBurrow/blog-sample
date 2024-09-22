@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -26,11 +27,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.PreviewActivity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
+import kr.lul.blog.navigation.abstraction.ui.component.CommonFeature
 import kr.lul.blog.navigation.abstraction.ui.navigator.SecondNavigator
 import kr.lul.blog.navigation.abstraction.ui.theme.NavigationTheme
 import kr.lul.blog.navigation.abstraction.viewmodel.SecondViewModel
@@ -107,6 +110,16 @@ private fun SecondScreenContent(
         Button(onClick = navigator::back, modifier = Modifier.padding(16.dp)) {
             Text(text = "Go Back", style = MaterialTheme.typography.bodyLarge)
         }
+
+        CommonFeature(
+            modifier = Modifier.fillMaxWidth(),
+            onClickRestart = navigator::restart,
+            onClickExit = navigator::exit,
+            onClickReopen = navigator::reopen,
+            onClickSettings = navigator::settings,
+            onClickOpenWeb = navigator::web,
+            onClickCall = navigator::call
+        )
     }
 }
 
@@ -114,6 +127,6 @@ private fun SecondScreenContent(
 @Preview(showSystemUi = true)
 private fun PreviewSecondScreenContent() {
     NavigationTheme {
-        SecondScreenContent(SecondNavigator(rememberNavController()))
+        SecondScreenContent(SecondNavigator(PreviewActivity(), rememberNavController()))
     }
 }
