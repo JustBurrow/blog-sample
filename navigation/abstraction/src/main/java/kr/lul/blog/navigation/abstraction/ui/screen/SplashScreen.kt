@@ -1,5 +1,6 @@
 package kr.lul.blog.navigation.abstraction.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ fun SplashScreen(
     navigator: SplashNavigator,
     viewModel: SplashViewModel = hiltViewModel()
 ) {
+    Log.v("ui", "#SplashScreen args : navigator=$navigator, viewModel=$viewModel")
     val scope = rememberCoroutineScope()
     LaunchedEffect(viewModel) {
         scope.launch {

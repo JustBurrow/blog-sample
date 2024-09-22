@@ -1,5 +1,6 @@
 package kr.lul.blog.navigation.abstraction.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -45,6 +46,7 @@ fun ThirdScreen(
     args: ThirdScreenArgs,
     viewModel: ThirdViewModel = hiltViewModel()
 ) {
+    Log.v("ui", "#ThirdScreen args : navigator=$navigator, args=$args, viewModel=$viewModel")
     ThirdScreenContent(navigator = navigator, args = args)
 }
 

@@ -1,5 +1,6 @@
 package kr.lul.blog.navigation.abstraction.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -47,6 +48,7 @@ fun FirstScreen(
     navigator: FirstNavigator,
     viewModel: FirstViewModel = hiltViewModel()
 ) {
+    Log.v("ui", "#FirstScreen args : navigator=$navigator, viewModel=$viewModel")
     FirstScreenContent(
         navigator = navigator
     )
