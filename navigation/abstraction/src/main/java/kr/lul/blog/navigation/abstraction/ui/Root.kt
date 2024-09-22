@@ -3,13 +3,13 @@ package kr.lul.blog.navigation.abstraction.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import kr.lul.blog.navigation.abstraction.ui.navigator.FirstNavigator
 import kr.lul.blog.navigation.abstraction.ui.navigator.SecondNavigator
 import kr.lul.blog.navigation.abstraction.ui.navigator.SplashNavigator
 import kr.lul.blog.navigation.abstraction.ui.navigator.ThirdNavigator
+import kr.lul.blog.navigation.abstraction.ui.navigator.composable
 import kr.lul.blog.navigation.abstraction.ui.screen.FirstScreen
 import kr.lul.blog.navigation.abstraction.ui.screen.SecondScreen
 import kr.lul.blog.navigation.abstraction.ui.screen.SplashScreen
@@ -22,16 +22,16 @@ fun Root(
 ) {
     NavigationTheme {
         NavHost(navHostController, SplashNavigator.route()) {
-            composable(SplashNavigator.routePattern) {
+            composable(SplashNavigator) {
                 SplashScreen(navigator = SplashNavigator(navHostController))
             }
-            composable(FirstNavigator.routePattern) {
+            composable(FirstNavigator) {
                 FirstScreen(navigator = FirstNavigator(navHostController))
             }
-            composable(SecondNavigator.routePattern) {
+            composable(SecondNavigator) {
                 SecondScreen(navigator = SecondNavigator(navHostController))
             }
-            composable(ThirdNavigator.routePattern, ThirdNavigator.arguments) {
+            composable(ThirdNavigator) {
                 ThirdScreen(
                     navigator = ThirdNavigator(navHostController),
                     args = it.toRoute()
