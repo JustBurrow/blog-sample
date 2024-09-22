@@ -37,6 +37,8 @@ class ThirdNavigator(
         fun route(param1: Int, param2: String) = "third/$param1?param2=$param2"
     }
 
+    override val destination: Destination = Companion
+
     override fun back() {
         navHostController.popBackStack()
     }

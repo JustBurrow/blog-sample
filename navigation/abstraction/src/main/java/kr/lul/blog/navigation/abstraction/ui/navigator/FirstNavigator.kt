@@ -32,6 +32,8 @@ class FirstNavigator(
         navHostController.navigate(ThirdNavigator.route(param1))
     }
 
+    override val destination: Destination = Companion
+
     override fun back() {
         navHostController.popBackStack()
     }

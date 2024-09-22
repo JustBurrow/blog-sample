@@ -29,6 +29,8 @@ class SplashNavigator(
         navHostController.navigate(FirstNavigator.route())
     }
 
+    override val destination: Destination = Companion
+
     override fun back() {
         throw UnsupportedOperationException()
     }

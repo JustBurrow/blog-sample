@@ -1,7 +1,9 @@
 package kr.lul.blog.navigation.abstraction.ui
 
 import android.app.Activity
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -23,20 +25,25 @@ fun Root(
     navHostController: NavHostController = rememberNavController()
 ) {
     NavigationTheme {
-        NavHost(navHostController, SplashNavigator.route()) {
-            composable(SplashNavigator) {
-                SplashScreen(navigator = SplashNavigator(activity, navHostController))
+        NavHost(
+            navController = navHostController,
+            startDestination = SplashNavigator.route(),
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            composable(SplashNavigator(activity, navHostController)) { _, navigator ->
+                SplashScreen(navigator)
             }
-            composable(FirstNavigator) {
-                FirstScreen(navigator = FirstNavigator(activity, navHostController))
+            composable(FirstNavigator(activity, navHostController)) { _, navigator ->
+                FirstScreen(navigator)
             }
-            composable(SecondNavigator) {
-                SecondScreen(navigator = SecondNavigator(activity, navHostController))
+            composable(SecondNavigator(activity, navHostController)) { _, navigator ->
+                SecondScreen(navigator)
             }
-            composable(ThirdNavigator) {
+            composable(ThirdNavigator(activity, navHostController)) { backStackEntry, navigator ->
                 ThirdScreen(
-                    navigator = ThirdNavigator(activity, navHostController),
-                    args = it.toRoute()
+                    navigator = navigator,
+                    args = backStackEntry.toRoute()
                 )
             }
         }

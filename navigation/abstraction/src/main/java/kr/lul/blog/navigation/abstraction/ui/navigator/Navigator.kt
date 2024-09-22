@@ -4,6 +4,11 @@ import android.net.Uri
 
 interface Navigator {
     /**
+     * 현재 화면의 내비게이션 그래프 정보.
+     */
+    val destination: Destination
+
+    /**
      * 돌아가기.
      */
     fun back()
